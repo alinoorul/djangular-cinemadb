@@ -1,0 +1,24 @@
+<h2>All Movies from Django REST API</h2>
+
+
+ <ul class = "movies">
+    <li *ngFor="let movie of movies"
+        [class.selected]="movie === selectedMovie"
+        (click)="onSelect(movie)">
+        <span class="title">{{movie.movieName}}</span>
+    </li>
+</ul>
+
+<div *ngIf="selectedMovie">
+
+  <h2>{{selectedMovie.name | uppercase}} Details</h2>
+  <div>
+    <p>id: {{selectedMovie.id}}</p>
+    <p>Release Date: {{selectedMovie.releaseDate | date:"mediumDate"}}</p>
+    <p>Upvotes: {{selectedMovie.upvoteCount}}</p>
+</div>
+<div *ngIf="selectedMovie">
+    <button (click)="upvote(selectedMovie)">Upvote</button>
+</div>
+  
+</div>
